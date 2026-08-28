@@ -417,10 +417,12 @@
     .crew-row {
       display: grid;
       grid-template-columns: 43% 57%;
-      align-items: baseline;
+      align-items: center;
       min-width: 0;
+      min-height: 25px;
       font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.15;
+      line-height: 1.2;
+      overflow: visible;
     }
 
     .card-position {
@@ -428,17 +430,21 @@
       padding-right: .12in;
       font-size: 18px;
       font-weight: 400;
+      line-height: 1.2;
       white-space: nowrap;
+      overflow: visible;
     }
 
     .card-name {
       font-size: 20px;
       font-weight: 700;
-      line-height: 1.15;
-      padding-bottom: 2px;
+      line-height: 1.25;
+      padding-top: 1px;
+      padding-bottom: 3px;
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      overflow: visible;
+      text-overflow: clip;
+      min-width: 0;
     }
 
     .preview-tip {
