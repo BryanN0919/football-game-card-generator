@@ -738,7 +738,7 @@
       if (crewSize === 4) {
         document.querySelectorAll(".pos-5, .pos-7").forEach(el => el.classList.add("hidden"));
       } else if (crewSize === 5) {
-        document.querySelectorAll(".pos-7").forEach(el => el.classList.add("hidden"));
+        document.querySelectorAll(".pos-7:not(.pos-5)").forEach(el => el.classList.add("hidden"));
       }
 
       document.getElementById("previewTitle").textContent =
