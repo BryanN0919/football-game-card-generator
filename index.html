@@ -17,8 +17,8 @@
 	
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Football Game Card Generator v9</title>
-  <meta name="description" content="Create printable 4-up football officials game cards for 4-, 5-, and 7-person crews." />
+  <title>Football Game Card Generator v10</title>
+  <meta name="description" content="Create printable 4-up football officials game cards for 4-, 5-, 7- and 8-person crews." />
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -528,6 +528,7 @@
           <button class="crew-btn" data-size="4">4-PERSON</button>
           <button class="crew-btn active" data-size="5">5-PERSON</button>
           <button class="crew-btn" data-size="7">7-PERSON</button>
+          <button class="crew-btn" data-size="8">8-PERSON</button>
         </div>
 
         <div class="field">
@@ -563,6 +564,9 @@
         <div class="official-grid">
           <div class="position-label">Referee</div>
           <input id="referee" list="officialNames" value="Referee" />
+
+          <div class="position-label">Centre</div>
+          <input id="centre" list="officialNames" value="Centre" />
 
           <div class="position-label">Umpire</div>
           <input id="umpire" list="officialNames" value="Umpire" />
@@ -643,6 +647,9 @@
         <div class="crew-row row-referee">
           <div class="card-position">Referee:</div><div class="card-name referee"></div>
         </div>
+        <div class="crew-row row-centre">
+          <div class="card-position">Centre:</div><div class="card-name centre"></div>
+        </div>
         <div class="crew-row row-umpire">
           <div class="card-position">Umpire:</div><div class="card-name umpire"></div>
         </div>
@@ -687,9 +694,9 @@
 
     const fields = [
       "homeTeam","awayTeam","gameDate","kickoff","location",
-      "referee","umpire","headLinesman","lineJudge","backJudge","fieldJudge","sideJudge"
+      "referee", "centre", "umpire","headLinesman","lineJudge","backJudge","fieldJudge","sideJudge"
     ];
-    const officials = ["referee","umpire","headLinesman","lineJudge","backJudge","fieldJudge","sideJudge"];
+    const officials = ["referee", "centre", "umpire","headLinesman","lineJudge","backJudge","fieldJudge","sideJudge"];
 
     const sheet = document.getElementById("sheet");
     const cardTemplate = document.getElementById("cardTemplate");
@@ -765,9 +772,9 @@
       document.querySelectorAll(".pos-5, .pos-7").forEach(el => el.classList.remove("hidden"));
 
       if (crewSize === 4) {
-        document.querySelectorAll(".pos-5, .pos-7").forEach(el => el.classList.add("hidden"));
+        document.querySelectorAll(".pos-3, .pos-5, .pos-7").forEach(el => el.classList.add("hidden"));
       } else if (crewSize === 5) {
-        document.querySelectorAll(".pos-7:not(.pos-5)").forEach(el => el.classList.add("hidden"));
+        document.querySelectorAll(".pos-3, .pos-7:not(.pos-5)").forEach(el => el.classList.add("hidden"));
       }
 
       document.getElementById("previewTitle").textContent =
@@ -828,9 +835,13 @@
           frag.querySelector(".row-backJudge").remove();
           frag.querySelector(".row-fieldJudge").remove();
           frag.querySelector(".row-sideJudge").remove();
+          frag.querySelector(".row-centre").remove();
         } else if (crewSize === 5) {
           frag.querySelector(".row-fieldJudge").remove();
           frag.querySelector(".row-sideJudge").remove();
+          frag.querySelector(".row-centre").remove();
+        } else if (crewSize === 7) {
+          frag.querySelector(".row-centre").remove();
         }
 
         sheet.appendChild(frag);
