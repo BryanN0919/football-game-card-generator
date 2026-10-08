@@ -25,6 +25,16 @@ FEATURES
   Field Judge
   Side Judge
 
+- 8-person crew
+  Referee
+  Centre
+  Umpire
+  Head Linesman
+  Line Judge
+  Back Judge
+  Field Judge
+  Side Judge
+
 CARD DESIGN
 - 4 cards on one US Letter 8.5 x 11 page
 - Thick black horizontal line above the gray game-information section
@@ -134,3 +144,6 @@ VERSION 9 DIRECT-PDF FIX
 
 NOTE
 The jsPDF and html2canvas JavaScript libraries are still loaded from cdnjs.com, so internet access is required for the green Download PDF button. Normal browser Print does not depend on those libraries.
+
+VERSION 10 ADDED 8 person crew
+- Added the 8-person crew to the index.html
